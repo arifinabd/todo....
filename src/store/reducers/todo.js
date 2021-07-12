@@ -17,7 +17,7 @@ const todoReducer = (state = initialstate, {type, payload}) => {
                 todos: payload
             }
         case GET_TODO_BY_ID:
-            const findTodo = state.todos.find((todo) => todo.id.toString() === payload.toString())
+            const findTodo = state.todos.find((todo) => todo.id === payload)
             return{
                 ...state,
                 todo: findTodo

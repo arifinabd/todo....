@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import useRouter from 'use-react-router';
 
-import { getTodo } from '../../store/actions/todo';
+import { getTodo, deleteTodo } from '../../store/actions/todo';
 
 
 
@@ -11,13 +11,19 @@ const List = (props) => {
 
   const { match, history } = useRouter();
 
-  const onClickGetButton = (id) => () => {
-    history.push(`/todo/${id}`);
+  const onClickGetButton = (id) => {
+    history.push(`/todo/${id}/`);
   };
+
+  const onDelete =(id) =>{
+    props.deleteTodos(id)
+  // console.log(deleteTodo)
+  }
 
   const onClickEditButton = (id) => {
     history.push(`/todo/${id}/update`);
   };
+
   console.log(props)
   return (
     <div>
@@ -30,7 +36,8 @@ const List = (props) => {
               <label>{element.name}</label>
               <label>{element.description}</label>
               <div>
-                <button type="button" onClick={onClickGetButton(element.id)}>Get</button>
+                <button type="button" onClick={() => onClickGetButton(element.id)}>Get</button>
+                <button type="button" onClick={() => onDelete(element.id)}>X</button>
                 {/* <button type="button" onClick={onClickEditButton(element.id)}>Edit</button> */}
               </div>
             </div>
@@ -51,9 +58,12 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
+  return (
+    {
     getTodos: () => dispatch(getTodo()),
+    deleteTodos: (id) => dispatch(deleteTodo(id))
   }
+  )
 };
 // export default List
 export default connect(mapStateToProps, mapDispatchToProps)(List);

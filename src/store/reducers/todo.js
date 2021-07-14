@@ -1,4 +1,5 @@
-import { GET_TODO, GET_TODO_BY_ID } from "../constants"
+import { DELETE_TODO, GET_TODO, GET_TODO_BY_ID } from "../constants"
+
 
 const initialstate = {
     todos: [],
@@ -17,10 +18,16 @@ const todoReducer = (state = initialstate, {type, payload}) => {
                 todos: payload
             }
         case GET_TODO_BY_ID:
-            const findTodo = state.todos.find((todo) => todo.id === payload)
+            const findTodo = state.todos.find((todo) => todo.id.toString() === payload.toString())
             return{
                 ...state,
                 todo: findTodo
+            }
+        case DELETE_TODO:
+            const removeItem = state.todos.filter((todo) => todo.id !== payload)
+            return {
+                ...state,
+                todos: removeItem
             }
         default:
             return state

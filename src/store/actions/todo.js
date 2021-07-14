@@ -1,4 +1,4 @@
-import { GET_TODO, GET_TODO_BY_ID } from "../constants"
+import { GET_TODO, GET_TODO_BY_ID, DELETE_TODO } from "../constants"
 
 export const getTodo = () => {
     // request ke backend
@@ -37,6 +37,13 @@ export const getTodoById = (id) => {
     }
 }
 
+export const deleteTodo = (id) => {
+    return{
+        type: DELETE_TODO,
+        payload: id,
+    }
+}
+
 // export const addTodo = (payload) => {
 //     return{
 //         type: ADD_TODO,
@@ -51,10 +58,5 @@ export const getTodoById = (id) => {
 //     }
 // };
 
-// export const deleteTodo = (id) => {
-//     return{
-//         type: DELETE_TODO,
-//         payload: id,
-//     }
-// }
+
 // export default {getTodo, getTodoById}

@@ -7,9 +7,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import RegisterPage from "./pages/auth/Register";
 import ListTodoPage from "./pages/todo";
 import DetailTodoPage from "./pages/todo/detail";
-// import UpdateTodoPage from "./pages/todo/Update-todo";
-// import AddTodoPage from "./pages/todo/Add-todo";
-// import DeleteTodoPage from "./pages/todo/Delete-todo";
+// import UpdateTodoPage from "./pages/todo/update";
+// import AddTodoPage from "./pages/todo/add";
+import DeleteTodoPage from "./pages/todo/delete";
 // import NotFoundPage from "./pages/Notfound";
 // import ProtectedLayout from './component/protectedLayout';
 
@@ -24,7 +24,7 @@ function App() {
               
               {/* <ProtectedLayout component={AddTodoPage} path="/todo/add"/> */}
               {/* <Route component={UpdateTodoPage} path="/todo/:id/update"/> */}
-              {/* <ProtectedLayout component={DeleteTodoPage} path="/todo/:id/delete"/> */}
+              <Route component={DeleteTodoPage} path="/todo/:id/delete"/>
               <Route component={DetailTodoPage} path="/todo/:id"/>
               <Route component={ListTodoPage} exact path="/"/>
               {/* <ProtectedLayout component={NotFoundPage} /> */}
